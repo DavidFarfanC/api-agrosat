@@ -50,6 +50,11 @@ app.get('/api/nasa', async (req, res) => {
   }
 });
 
+// Endpoint para el Health Check
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Configuración del puerto (usar el puerto proporcionado por Heroku o 3000)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
