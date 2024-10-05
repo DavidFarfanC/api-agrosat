@@ -8,8 +8,34 @@ app.use(express.json());
 
 // Ruta básica para verificar que el servidor funciona
 app.get('/', (req, res) => {
-  res.send('API AgroSat funcionando correctamente');
+  res.send(`
+    <h1>Bienvenido a la API Agrícola</h1>
+    <p>Esta API proporciona datos de sensores y datos de la NASA para aplicaciones agrícolas.</p>
+    <h2>Rutas disponibles:</h2>
+    <ul>
+      <li><strong>GET /</strong> - Página principal con información sobre los endpoints.</li>
+      <li><strong>GET /health</strong> - Verifica la salud del servidor (debe devolver 'OK').</li>
+      <li><strong>POST /api/sensores</strong> - Enviar datos de sensores. Espera un cuerpo JSON con 'humedad', 'temperatura' y 'gps'. Ejemplo:
+        <pre>
+{
+  "humedad": 45,
+  "temperatura": 20,
+  "gps": {
+    "latitud": 12.34,
+    "longitud": 56.78
+  }
+}
+        </pre>
+      </li>
+      <li><strong>GET /api/nasa?lat=&lon=</strong> - Obtener datos de NASA basados en coordenadas. Ejemplo de uso:
+        <pre>
+GET /api/nasa?lat=12.34&lon=56.78
+        </pre>
+      </li>
+    </ul>
+  `);
 });
+
 
 // Ruta para recibir datos de sensores (POST)
 app.post('/api/sensores', (req, res) => {
