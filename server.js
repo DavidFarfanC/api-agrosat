@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Ruta básica para verificar que el servidor funciona
 app.get('/', (req, res) => {
-  res.send('API Agricola funcionando correctamente');
+  res.send('API AgroSat funcionando correctamente');
 });
 
 // Ruta para recibir datos de sensores (POST)
@@ -55,7 +55,7 @@ app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
 
-// Configuración del puerto (usar el puerto proporcionado por Heroku o 3000)
+// Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
